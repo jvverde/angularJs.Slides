@@ -81,6 +81,12 @@ gulp.task('css', ['clean:css'], function() {
     .pipe(connect.reload());
 });
 
+gulp.task('examples', ['clean:examples'], function() {
+  return gulp.src('src/examples/**/*')
+    .pipe(gulp.dest('dist/examples'))
+    .pipe(connect.reload());
+});
+
 gulp.task('images', ['clean:images'], function() {
   return gulp.src('src/images/**/*')
     .pipe(gulp.dest('dist/images'))
@@ -107,6 +113,10 @@ gulp.task('clean:images', function(done) {
   del('dist/images', done);
 });
 
+gulp.task('clean:examples', function(done) {
+  del('dist/examples', done);
+});
+
 gulp.task('connect', ['build'], function() {
   connect.server({
     root: 'dist',
@@ -122,6 +132,7 @@ gulp.task('watch', function() {
   gulp.watch('src/**/*.jade', ['html']);
   gulp.watch('src/styles/**/*.styl', ['css']);
   gulp.watch('src/images/**/*', ['images']);
+  gulp.watch('src/examples/**/app/**/*', ['examples']);
   gulp.watch([
     'src/scripts/**/*.js',
     'bespoke-theme-*/dist/*.js' // Allow themes to be developed in parallel

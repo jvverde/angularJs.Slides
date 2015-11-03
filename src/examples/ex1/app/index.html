@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>EX1</title>
+    <meta name="description" content="Exemplo 1">
+  </head>
+  <body ng-app="ex1">
+    <div ng-controller="MainCtrl as main">
+      <button ng-click="main.add()">Add</button>
+      <div ng-repeat="name in main.names track by $index">
+        <div>
+          Nome:<input ng-model="name"><br>
+        </div>
+        <div ng-if="name">
+          Olá {{name}}
+        </div>
+      </div>
+    </div>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="scripts/controllers/main.js"></script>
+  </body>
+</html>

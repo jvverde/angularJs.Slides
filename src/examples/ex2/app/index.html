@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>EX2</title>
+    <meta name="description" content="Exemplo 2">
+  </head>
+  <body ng-app="ex2">
+    <div ng-controller="MainCtrl as main">
+      <table>
+        <thead>
+          <tr>
+            <td>Nome</td>
+            <td>Telefone</td>
+          </tr>
+          <tr>
+            <td><input ng-model="search.name"></td>
+            <td><input ng-model="search.phone"></td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="person in main.persons|filter:search|orderBy:'name'">
+            <td>{{person.name}}</td>
+            <td>{{person.phone}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="scripts/controllers/main.js"></script>
+  </body>
+</html>
